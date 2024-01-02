@@ -5,7 +5,9 @@ const debugLevel = config.server.debug;
 const isDevelopment = process.env.NODE_ENV === 'development';
 
 const logger = winston.createLogger({
-  level: debugLevel,
+  level: isDevelopment
+    ? "debug"
+    : debugLevel,
   format: isDevelopment
     ? winston.format.combine(
         winston.format.colorize(),

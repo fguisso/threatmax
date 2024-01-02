@@ -21,6 +21,7 @@ app.use(async (ctx, next) => {
   await next();
   const ms = Date.now() - start;
   logger.info(`${ctx.method} ${ctx.url} - ${ms}ms`);
+  logger.debug(JSON.stringify(ctx.request.headers));
 });
 
 // Registering routes

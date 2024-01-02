@@ -42,7 +42,7 @@ router.delete('/:id', async (ctx) => {
 router.get('/', async (ctx) => {
     const { query, page, limit } = ctx.query;
     const parsedPage = Number(page ? page : 1);
-    const parsedLimit = Number(limit ? limit : 10);
+    const parsedLimit = Number(limit ? limit : 5);
     if (query) {
         const threatModels = await threatModelService.searchThreatModels(query as IThreatModelFilter, parsedPage, parsedLimit);
         ctx.body = threatModels;

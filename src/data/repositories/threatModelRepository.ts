@@ -5,7 +5,9 @@ const ThreatModelSchema = new Schema<IThreatModelData>({
   name: { type: String, required: true },
   description: { type: String, required: true },
   author: { type: String, required: true },
-  appOwner: { type: String, required: true },
+  productOwner: { type: String, required: true },
+  createdAt: { type: Date, deafult: Date.now },
+  updatedAt: { type: Date, default: Date.now },
   entities: [{
     name: String
   }],
@@ -42,8 +44,13 @@ const ThreatModelSchema = new Schema<IThreatModelData>({
       resolvedAt: Date
     }]
   }],
-  dataflowName: { type: String, required: true },
-  dataflowCode: { type: String, required: true }
+  dataflow: {
+    url: String,
+    format: { type: String, required: true },
+    code: String
+  }
+}, {
+  timestamps: true
 });
 
 const ThreatModel = model<IThreatModelData>('ThreatModel', ThreatModelSchema);

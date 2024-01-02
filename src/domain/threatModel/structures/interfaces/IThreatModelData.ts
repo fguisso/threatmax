@@ -4,15 +4,22 @@ export interface IThreatModelData extends Document {
     name: string;
     description: string;
     author: string;
-    appOwner: string;
+    productOwner: string;
+    createdAt: Date;
+    updatedAt: Date;
     entities: EntityData[];
     processes: ProcessData[];
     databases: DatabaseData[];
     boundaries: BoundaryData[];
     assets: AssetData[];
     threats: ThreatData[];
-    dataflowName: string;
-    dataflowCode: string;
+    dataflow: DataflowData;
+}
+
+interface DataflowData {
+    url: string;
+    format: string;
+    code: string;
 }
 
 interface EntityData {
